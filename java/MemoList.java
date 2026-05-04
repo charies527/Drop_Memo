@@ -44,6 +44,11 @@ public class MemoList extends AppCompatActivity {
 
         memoList = dbHelper.getAllMemos();
 
+        Collections.sort(memoList, (a, b) -> {
+                if (a.isFavorite == b.isFavorite) return 0;
+                return a.isFavorite ? -1 : 1;
+            });
+
         MemoListAdapter adapter = new MemoListAdapter(this, memoList, dbHelper);
         listMemos.setAdapter(adapter);
 

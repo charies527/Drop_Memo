@@ -67,6 +67,12 @@ public class MemoListAdapter extends BaseAdapter {
         btnFavorite.setOnClickListener(v -> {
             memo.isFavorite = !memo.isFavorite;
             dbHelper.updateFavorite(memo.id, memo.isFavorite);
+
+            Collections.sort(memoList, (a, b) -> {
+                if (a.isFavorite == b.isFavorite) return 0;
+                return a.isFavorite ? -1 : 1;
+            });
+            
             notifyDataSetChanged();
         });
 
