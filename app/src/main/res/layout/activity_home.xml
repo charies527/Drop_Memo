@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
+    // 상단 바
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -20,6 +21,7 @@
             android:textStyle="bold"
             android:textColor="#000000"/>
 
+        // 설정 버튼
         <Button
             android:id="@+id/btn_settings"
             android:layout_width="wrap_content"
@@ -38,10 +40,11 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
+    // 메모 추가 버튼
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="40dp"
         android:layout_margin="12dp"
         android:text="+ 추가하기"
         android:textSize="13sp"
@@ -62,6 +65,7 @@
         android:layout_height="56dp"
         android:background="#3D3D3D">
 
+        // 목록 버튼
         <Button
             android:id="@+id/btn_list"
             android:layout_width="match_parent"
