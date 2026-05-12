@@ -54,6 +54,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("AAA","위도 : " + lat );
                 Log.i("AAA","경도 : " + lng );
                 Log.i("AAA", "" );
+
+
+                //위치 정확도 확인
+                //accuracy 값이 클수록 정확도 낮음
+                if(location.hasAccuracy()){
+                    float accuracy = location.getAccuracy();
+
+                    //현재 위치 정확도 출력
+                    Log.i("AAA", "정확도 :" + accuracy);
+
+                    //정확도가 낮으면 위치데이터 사용을 안함
+                    if(accuracy>30){
+                        Log.i("AAA", "정확도 낮음");
+                        return;
+                    }
+                }
+
             }
         };
 
@@ -109,6 +126,6 @@ public class MainActivity extends AppCompatActivity {
                     locationListener
             );
         }
-
     }
+
 }
