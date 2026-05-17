@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DropMemo">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HomeActivity"/>
-        <activity android:name=".ListActivity"/>
-        <activity android:name=".AddActivity"/>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".ui.HomeActivity"/>
+        <activity android:name=".ui.ListActivity"/>
+        <activity android:name=".ui.AddActivity"/>
+        <activity android:name=".ui.SettingsActivity"/>
         <activity android:name=".MainActivity"/>
 
     </application>
