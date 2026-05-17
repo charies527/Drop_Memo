@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
-        // 뒤로가기
+        <!-- 뒤로가기 -->
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    // 위치
+    <!-- 위치 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"/>
 
-    // gps 사용
+    <!-- gps 사용-->
     <RelativeLayout
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -80,7 +80,7 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    // 알림 반경
+    <!-- 알림 반경 -->
     <RelativeLayout
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -102,7 +102,7 @@
                 android:textSize="16sp"
                 android:textColor="#000000"/>
 
-            // 설정한 반경 표시
+            <!-- 설정한 반경 표시 -->
             <TextView
                 android:id="@+id/tv_radius_setting"
                 android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
 
         </LinearLayout>
 
-        // 알림 반경 설정 버튼
+        <!-- 알림 반경 설정 버튼 -->
         <Button
             android:id="@+id/btn_radius"
             android:layout_width="wrap_content"
@@ -132,7 +132,7 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    // 알림
+    <!-- 알림 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"/>
 
-    푸시알림
+    <!-- 푸시 알림 -->
     <RelativeLayout
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -174,7 +174,7 @@
 
         </LinearLayout>
 
-        // 푸시알림 스위치
+        <!-- 푸시 알림 스위치 -->
         <Switch
             android:id="@+id/switch_push"
             android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    // 알림 소리 설정
+    <!-- 알림 소리 설정-->
     <RelativeLayout
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -220,7 +220,7 @@
 
         </LinearLayout>
 
-        // 알림 소리 설정 스위치
+        <!-- 알림 소리 설정 스위치 -->
         <Switch
             android:id="@+id/switch_sound"
             android:layout_width="wrap_content"

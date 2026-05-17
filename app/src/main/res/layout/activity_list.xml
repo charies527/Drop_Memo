@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp">
 
-        // 뒤로가기
+        <!-- 뒤로가기 -->
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    // 메모 추가 버튼
+    <!-- 메모 추가 버튼 -->
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"/>
 
-    // 목록
+    <!-- 목록 -->
     <ListView
         android:id="@+id/list_places"
         android:layout_width="match_parent"

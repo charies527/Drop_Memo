@@ -1,9 +1,11 @@
-package com.example.dropmemo;
+package com.example.dropmemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dropmemo.R;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

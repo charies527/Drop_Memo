@@ -1,10 +1,12 @@
-package com.example.dropmemo;
+package com.example.dropmemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.view.View;
+
+import com.example.dropmemo.R;
 
 public class ListActivity extends AppCompatActivity {
     @Override

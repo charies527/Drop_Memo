@@ -1,4 +1,4 @@
-package com.example.dropmemo;
+package com.example.dropmemo.ui;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.view.View;
 import android.content.SharedPreferences;
 import android.widget.TextView;
+
+import com.example.dropmemo.R;
 
 public class AddActivity extends AppCompatActivity {
     @Override
