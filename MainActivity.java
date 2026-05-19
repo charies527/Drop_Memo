@@ -21,11 +21,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+//네이버 지도 관련
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Marker;
+
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
 
 
     LocationManager locationManager;     // 위치 정보를 관리하는 관리자역할
     LocationListener locationListener;   //위치가 바뀔 때마다 실행되는 리스너
+
+    NaverMap naverMap;  // 네이버 지도 객체
+
+    Marker currnetMarker; //현재 위치를 표기할 마커
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //네이버지도 Fragment 가져오기
+        MapFragment mapFragment = (MapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+
+        //만약 Fragment가 없다면 생성
+        if(mapFragment == null){
+            mapFragment = MapFragment.newInstance();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.map, mapFragment).commit();
+        }
+
+        mapFragment.getMapAsync(this);
 
         //위치 서비스 가져오기(GPS 사용할 준비)
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -70,8 +94,27 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                 }
+                //현재 위치 좌표 생성
+                LatLng currentLocation = new LatLng(lat,lng);
 
+                //네이버 지도 준비 완료 후 실행
+                if(naverMap != null){
+
+                    //현재 위치로 지도 이동
+                    CameraUpdate cameraUpdate = CameraUpdate.scrollTo(currentLocation);
+                    naverMap.moveCamera(cameraUpdate);
+                }
+                //마커가 없으면 생성
+                if(currnetMarker == null){
+                    currnetMarker = new Marker();
+                }
+                //마커 위치 설정
+               currnetMarker.setPosition(currentLocation);
+
+                //지도에 마커 표시
+                currnetMarker.setMap(naverMap);
             }
+
         };
 
         //위치 권한이 있는지 확인
@@ -127,5 +170,10 @@ public class MainActivity extends AppCompatActivity {
             );
         }
     }
-
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        this.naverMap = naverMap;
+        // 초기 지도 설정 (예: 줌 레벨 조절)
+        naverMap.setMinZoom(10.0);
+        Log.i("AAA", "지도가 준비되었습니다.");
+    }
 }
