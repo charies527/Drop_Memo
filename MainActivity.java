@@ -28,6 +28,7 @@ import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.NaverMapSdk;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Log.i("AAA","위도 : " + lat );
                 Log.i("AAA","경도 : " + lng );
                 Log.i("AAA", "" );
+
+                // 로그캣(Logcat)에서 "REAL_ID"를 검색해 보세요.
+                Log.d("REAL_ID", getPackageName());
 
 
                 //위치 정확도 확인
