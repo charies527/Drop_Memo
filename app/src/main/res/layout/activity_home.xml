@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    >
 
     <!-- 상단 바 -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
@@ -17,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="DROP MEMO"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- 설정 버튼 -->
         <Button
@@ -28,10 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="설정"
-            android:textSize="14sp"
             android:background="@android:color/transparent"
-            android:textColor="#000000"/>
+            android:text="설정"
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -40,25 +41,32 @@
         android:layout_height="1dp"
         android:background="#EEEEEE"/>
 
-    <!-- 메모 추가 버튼 -->
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_margin="12dp"
-        android:text="+ 추가하기"
-        android:textSize="13sp"
-        android:textColor="#FFFFFF"
-        android:background="#F0F0F0"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"/>
-
+    <!-- 지도 화면 -->
     <FrameLayout
         android:id="@+id/map_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#DDDDDD"/>
+        android:layout_weight="1">
+
+        <com.naver.maps.map.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!-- 메모 추가 버튼 -->
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:text="+ 추가하기"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:background="#F0F0F0"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"/>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,9 +78,11 @@
             android:id="@+id/btn_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="☰  목록"
+            android:gravity="center"
+            android:text="☰ 목록"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:textAllCaps="false"
             android:background="@android:color/transparent"/>
 
     </LinearLayout>

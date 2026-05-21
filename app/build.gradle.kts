@@ -45,4 +45,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.naver.maps:map-sdk:3.23.0")
 }
