@@ -1,14 +1,18 @@
-package com.cookandroid.real_memo;
+package com.example.dropmemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
-import android.widget.ToggleButton;
+import android.app.AlertDialog;
+import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.dropmemo.R;
 
-public class Setting extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
     DBHelper dbHelper;
 
     Switch swGps, swPush, swSound;
@@ -19,6 +23,26 @@ public class Setting extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Button btnRadius = findViewById(R.id.btn_radius);
+
+        btnRadius.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String[] options = {"20m", "30m", "50m", "100m", "200m"};
+
+                new AlertDialog.Builder(SettingsActivity.this)
+                        .setTitle("알림 반경 설정")
+                        .setItems(options, (dialog, which) -> {
+                            String selected = options[which];
+                            SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+                            prefs.edit().putString("radius", selected).apply();
+
+                            TextView tvRadiusSetting = findViewById(R.id.tv_radius_setting);
+                            tvRadiusSetting.setText(selected);
+                        })
+                        .show();
+            }
+        });
 
         dbHelper = new DBHelper(this);
 
@@ -53,12 +77,12 @@ public class Setting extends AppCompatActivity {
         });
 
         btnBack2.setOnClickListener(v -> {
-            Intent intent = new Intent(Setting.this, Home.class);
+            Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
             startActivity(intent);
         });
 
         btnRadius.setOnClickListener(v -> {
-            Intent intent = new Intent(Setting.this, SettingRadius.class);
+            Intent intent = new Intent(SettingsActivity.this, SettingRadius.class);
             startActivity(intent);
         });
     }

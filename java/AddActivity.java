@@ -1,4 +1,4 @@
-package com.cookandroid.real_memo;
+package com.example.dropmemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
+import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.dropmemo.R;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class AddingMemo extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
 
     DBHelper dbHelper;
 
@@ -35,8 +35,13 @@ public class AddingMemo extends AppCompatActivity {
         btnSave = findViewById(R.id.btn_save);
         swAlarm= findViewById(R.id.switch_alarm);
 
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        String radius = prefs.getString("radius", "100m");
+        TextView tvRadius = findViewById(R.id.tv_radius);
+        tvRadius.setText("현재 설정된 반경: " + radius);
+
         btnBack1.setOnClickListener(v -> {
-            Intent intent = new Intent(AddingMemo.this, Home.class);
+            Intent intent = new Intent(AddActivity.this, HomeActivity.class);
             startActivity(intent);
         });
 
