@@ -1,4 +1,4 @@
-package com.cookandroid.real_memo;
+package com.example.dropmemo.ui;
 
 public class SettingRadius {
 }
