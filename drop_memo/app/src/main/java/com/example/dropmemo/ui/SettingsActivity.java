@@ -27,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         Button btnRadius = findViewById(R.id.btn_radius);
 
         btnRadius.setOnClickListener(new View.OnClickListener() {
+            // 터치 시 반경 설정 창 띄움
             public void onClick(View v) {
                 String[] options = {"20m", "30m", "50m", "100m", "200m"};
 

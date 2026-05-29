@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Real_Memo"
+rootProject.name = "DropMemo"
 include(":app")
  

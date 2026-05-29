@@ -25,7 +25,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_add); // 메모 추가 화면을 보여줘라
 
         dbHelper = new DBHelper(this);
 
@@ -35,16 +35,19 @@ public class AddActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btn_save);
         swAlarm= findViewById(R.id.switch_alarm);
 
+        // 설정된 반경을 표시
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        String radius = prefs.getString("radius", "100m");
+        String radius = prefs.getString("radius", "100m"); // 기본값 100m
         TextView tvRadius = findViewById(R.id.tv_radius);
         tvRadius.setText("현재 설정된 반경: " + radius);
 
+        // 뒤로가기 버튼
         btnBack1.setOnClickListener(v -> {
             Intent intent = new Intent(AddActivity.this, HomeActivity.class);
             startActivity(intent);
         });
 
+        // 저장 버튼
         btnSave.setOnClickListener(v -> {
             String place = editPlace.getText().toString();
             String content = editContent.getText().toString();

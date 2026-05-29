@@ -1,4 +1,4 @@
-package com.cookandroid.real_memo;
+package com.example.dropmemo.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.dropmemo.ui.DBHelper;
+import com.example.dropmemo.ui.Memo;
+import com.example.dropmemo.R;
 
 import java.util.ArrayList;
 
@@ -68,14 +72,17 @@ public class MemoListAdapter extends BaseAdapter {
             memo.isFavorite = !memo.isFavorite;
             dbHelper.updateFavorite(memo.id, memo.isFavorite);
 
-            Collections.sort(memoList, (a, b) -> {
-                if (a.isFavorite == b.isFavorite) return 0;
-                return a.isFavorite ? -1 : 1;
+            memoList.sort((a, b) -> {
+                if (a.isFavorite != b.isFavorite) {
+                    return a.isFavorite ? -1 : 1;
+                }
+                return Long.compare(b.updatedAt, a.updatedAt);
             });
-            
+
             notifyDataSetChanged();
         });
 
+        // 메모 삭제
         btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("삭제 확인")
