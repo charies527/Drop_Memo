@@ -1,0 +1,14 @@
+# Android Studio
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+
+# Local SDK
+local.properties
+
+# Build outputs
+build/
+app/build/
+DropMemo/app/build/
