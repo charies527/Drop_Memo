@@ -17,7 +17,7 @@
         android:theme="@style/Theme.DropMemo">
 
         <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
+            android:name="com.naver.maps.map.NCP_KEY_ID"
             android:value="xry5ysz97e"/>
 
         <activity
