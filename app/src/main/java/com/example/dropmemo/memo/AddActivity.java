@@ -1,5 +1,6 @@
 package com.example.dropmemo.memo;
 
+import android.util.Log;
 import android.content.Intent;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -71,6 +72,24 @@ public class AddActivity extends AppCompatActivity {
         EditText etMemo =
                 findViewById(R.id.et_memo);
 
+        //
+        int memoId =
+                getIntent().getIntExtra("id", -1);
+
+        String editPlace =
+                getIntent().getStringExtra("place");
+
+        String editContent =
+                getIntent().getStringExtra("content");
+
+        if (editPlace != null) {
+            etPlace.setText(editPlace);
+        }
+
+        if (editContent != null) {
+            etMemo.setText(editContent);
+        }
+
         ImageButton btnSearch =
                 findViewById(R.id.btn_search);
 
@@ -78,6 +97,7 @@ public class AddActivity extends AppCompatActivity {
                 findViewById(R.id.list_search_result);
 
         swAlarm = findViewById(R.id.switch_alarm);
+
         Button btnSave =
                 findViewById(R.id.btn_save);
 
@@ -262,14 +282,24 @@ public class AddActivity extends AppCompatActivity {
                 return;
             }
 
-            boolean isFavorite =
-                    swAlarm.isChecked();
+            boolean isFavorite = swAlarm.isChecked();
 
-            dbHelper.insertMemo(
-                    place,
-                    content,
-                    isFavorite
-            );
+            if (memoId == -1) {
+
+                dbHelper.insertMemo(
+                        place,
+                        content,
+                        isFavorite
+                );
+
+            } else {
+
+                dbHelper.updateMemo(
+                        memoId,
+                        place,
+                        content
+                );
+            }
 
             Toast.makeText(
                     getApplicationContext(),

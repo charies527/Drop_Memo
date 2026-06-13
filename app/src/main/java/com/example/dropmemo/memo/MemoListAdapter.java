@@ -61,9 +61,9 @@ public class MemoListAdapter extends BaseAdapter {
         txtContent.setText(memo.content);
 
         if (memo.isFavorite) {
-            btnFavorite.setImageResource(android.R.drawable.btn_star_big_on);
+            btnFavorite.setImageResource(R.drawable.ic_favorite);
         } else {
-            btnFavorite.setImageResource(android.R.drawable.btn_star_big_off);
+            btnFavorite.setImageResource(R.drawable.ic_un_favorite);
         }
 
         btnFavorite.setOnClickListener(v -> {
@@ -91,6 +91,20 @@ public class MemoListAdapter extends BaseAdapter {
                     })
                     .setNegativeButton("아니오", null)
                     .show();
+        });
+
+        view.setOnClickListener(v -> {
+
+            android.content.Intent intent =
+                    new android.content.Intent(
+                            context,
+                            AddActivity.class
+                    );
+            intent.putExtra("id", memo.id);
+            intent.putExtra("place", memo.place);
+            intent.putExtra("content", memo.content);
+
+            context.startActivity(intent);
         });
 
         return view;

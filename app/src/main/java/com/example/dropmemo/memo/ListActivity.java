@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +43,8 @@ public class ListActivity extends AppCompatActivity {
         adapter = new MemoListAdapter(this, memoList, dbHelper);
 
         listMemos.setAdapter(adapter);
+        listMemos.setClickable(true);
+        listMemos.setItemsCanFocus(false);
 
         loadMemos();
 
@@ -50,7 +53,6 @@ public class ListActivity extends AppCompatActivity {
         });
     }
     private void loadMemos() {
-
         memoList.clear();
 
         memoList.addAll(dbHelper.getAllMemos());
