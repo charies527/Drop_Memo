@@ -21,7 +21,7 @@
             android:value="xry5ysz97e"/>
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".memo.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,11 +29,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.HomeActivity"/>
-        <activity android:name=".ui.ListActivity"/>
-        <activity android:name=".ui.AddActivity"/>
-        <activity android:name=".ui.SettingsActivity"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".memo.HomeActivity"/>
+        <activity android:name=".memo.ListActivity"/>
+        <activity android:name=".memo.AddActivity"/>
+        <activity android:name=".memo.SettingsActivity"/>
 
     </application>
 

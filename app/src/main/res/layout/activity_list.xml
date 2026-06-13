@@ -46,7 +46,6 @@
         android:paddingLeft="12dp"
         android:paddingRight="12dp"/>
 
-
     <!-- 목록 -->
     <ListView
         android:id="@+id/list_places"

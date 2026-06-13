@@ -1,5 +1,8 @@
-package com.example.dropmemo.ui;
+package com.example.dropmemo.memo;
 
+import android.content.Intent;
+import android.widget.Switch;
+import android.widget.Toast;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
@@ -39,10 +42,15 @@ public class AddActivity extends AppCompatActivity {
     private final String CLIENT_ID = "xry5ysz97e";
     private final String CLIENT_SECRET = "itBkXhWj3ORg94GslEWhD9Is0QFKhJ8W5HLGqW6y";
 
+    DBHelper dbHelper;
+    Switch swAlarm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        dbHelper = new DBHelper(this);
 
         // 설정된 반경 표시
         SharedPreferences prefs =
@@ -68,6 +76,10 @@ public class AddActivity extends AppCompatActivity {
 
         ListView listSearch =
                 findViewById(R.id.list_search_result);
+
+        swAlarm = findViewById(R.id.switch_alarm);
+        Button btnSave =
+                findViewById(R.id.btn_save);
 
         // 장소 검색 버튼
         btnSearch.setOnClickListener(v -> {
@@ -232,5 +244,40 @@ public class AddActivity extends AppCompatActivity {
                 findViewById(R.id.btn_back);
 
         btnBack.setOnClickListener(v -> finish());
+
+        // 저장
+        btnSave.setOnClickListener(v -> {
+
+            String place = etPlace.getText().toString();
+            String content = etMemo.getText().toString();
+
+            if (place.isEmpty() || content.isEmpty()) {
+
+                Toast.makeText(
+                        getApplicationContext(),
+                        "장소와 내용을 모두 입력하세요.",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                return;
+            }
+
+            boolean isFavorite =
+                    swAlarm.isChecked();
+
+            dbHelper.insertMemo(
+                    place,
+                    content,
+                    isFavorite
+            );
+
+            Toast.makeText(
+                    getApplicationContext(),
+                    "저장되었습니다.",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+            finish();
+        });
     }
 }

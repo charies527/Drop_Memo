@@ -1,4 +1,4 @@
-package com.example.dropmemo.ui;
+package com.example.dropmemo.memo;
 
 import android.content.Intent;
 import android.os.Bundle;

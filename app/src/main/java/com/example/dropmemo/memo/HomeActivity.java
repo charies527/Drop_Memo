@@ -1,4 +1,4 @@
-package com.example.dropmemo.ui;
+package com.example.dropmemo.memo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
-import com.naver.maps.map.NaverMapSdk;
 
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
