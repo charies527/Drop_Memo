@@ -12,7 +12,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "memo.db";
 
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 10;
 
     public DBHelper(Context context) { super(context, DB_NAME, null, DB_VERSION); }
 
@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "place TEXT, " +
                 "content TEXT, " +
                 "is_favorite INTEGER DEFAULT 0, " +
+                "is_alarm INTEGER DEFAULT 0, " +
                 "updated_at INTEGER)";
         sqLiteDatabase.execSQL(createTable);
     }
@@ -39,15 +40,21 @@ public class DBHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            db.execSQL("ALTER TABLE memo ADD COLUMN is_alarm INTEGER DEFAULT 0");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void insertMemo(String place, String content, boolean isFavorite) {
+    public void insertMemo(String place, String content, boolean isFavorite, boolean isAlarm) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put("place", place);
         values.put("content", content);
         values.put("is_favorite", isFavorite ? 1 : 0);
+        values.put("is_alarm", isAlarm ? 1 : 0);
         values.put("updated_at", System.currentTimeMillis());
 
         db.insert("memo", null, values);
@@ -67,9 +74,12 @@ public class DBHelper extends SQLiteOpenHelper {
             int isFavoriteInt = cursor.getInt(3);
             boolean isFavorite = (isFavoriteInt == 1);
 
-            long updatedAt = cursor.getLong(4);
+            int isAlarmInt = cursor.getInt(4);
+            boolean isAlarm = (isAlarmInt == 1);
 
-            list.add(new Memo(id, place, content, isFavorite, updatedAt));
+            long updatedAt = cursor.getLong(5);
+
+            list.add(new Memo(id, place, content, isFavorite, isAlarm, updatedAt));
         }
 
         cursor.close();
@@ -85,7 +95,16 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update("memo", values, "id=?", new String[]{String.valueOf(id)});
     }
 
-    public void updateMemo(int id, String place, String content) {
+    public void updateAlarm(int id, boolean isAlarm) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("is_alarm", isAlarm ? 1 : 0);
+
+        db.update("memo", values, "id=?", new String[]{String.valueOf(id)});
+    }
+
+    public void updateMemo(int id, String place, String content, boolean isAlarm) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -93,11 +112,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put("place", place);
         values.put("content", content);
+        values.put("is_alarm", isAlarm ? 1 : 0);
+
+        db.update("memo", values, "id=?", new String[]{String.valueOf(id)});
 
         values.put("updated_at", System.currentTimeMillis());
-
-        db.update("memo", values, "id=?",
-                new String[]{String.valueOf(id)});
     }
 
     public void deleteMemo(int id) {

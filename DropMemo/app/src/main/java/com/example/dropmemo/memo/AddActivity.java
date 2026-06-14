@@ -22,6 +22,8 @@ public class AddActivity extends AppCompatActivity {
 
     Switch swAlarm;
 
+    Memo memo;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -55,9 +57,9 @@ public class AddActivity extends AppCompatActivity {
                 return;
             }
 
-            boolean isFavorite = swAlarm.isChecked();
+            boolean isAlarm = swAlarm.isChecked();
 
-            dbHelper.insertMemo(place, content, isFavorite);
+            dbHelper.insertMemo(place, content, false, isAlarm);
 
             Toast.makeText(getApplicationContext(),
                     "저장되었습니다.", Toast.LENGTH_SHORT).show();
