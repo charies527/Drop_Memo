@@ -82,6 +82,9 @@ public class AddActivity extends AppCompatActivity {
         String editContent =
                 getIntent().getStringExtra("content");
 
+        boolean editAlarm =
+                getIntent().getBooleanExtra("isAlarm", false);
+
         if (editPlace != null) {
             etPlace.setText(editPlace);
         }
@@ -97,6 +100,8 @@ public class AddActivity extends AppCompatActivity {
                 findViewById(R.id.list_search_result);
 
         swAlarm = findViewById(R.id.switch_alarm);
+
+        swAlarm.setChecked(editAlarm);
 
         Button btnSave =
                 findViewById(R.id.btn_save);
@@ -282,14 +287,15 @@ public class AddActivity extends AppCompatActivity {
                 return;
             }
 
-            boolean isFavorite = swAlarm.isChecked();
+            boolean isAlarm = swAlarm.isChecked();
 
             if (memoId == -1) {
 
                 dbHelper.insertMemo(
                         place,
                         content,
-                        isFavorite
+                        false,
+                        isAlarm
                 );
 
             } else {
@@ -297,7 +303,8 @@ public class AddActivity extends AppCompatActivity {
                 dbHelper.updateMemo(
                         memoId,
                         place,
-                        content
+                        content,
+                        isAlarm
                 );
             }
 
